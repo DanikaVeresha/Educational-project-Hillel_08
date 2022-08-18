@@ -15,3 +15,5 @@ elif discr == 0:
     print("x = %.2f" % x)
 else:
     print(None)
+
+print("dasha")
