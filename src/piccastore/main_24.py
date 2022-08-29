@@ -1,4 +1,3 @@
-from itertools import count
 import random
 
 pizzas = [
@@ -33,7 +32,6 @@ chek_1 = random.sample(pizzas, a)
 print(chek_1)
 for i in chek_1:
     print(i)
-
     i = random.randint(1, 3)
     print(i)
 
