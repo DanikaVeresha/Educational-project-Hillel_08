@@ -1,5 +1,6 @@
-from itertools import count
 import random
+from itertools import count
+
 
 pizzas = [
     (1, 'Hawaiian', 100, 'Chicken + pineapple + bakery + mozzarella + sauce'),
@@ -13,20 +14,6 @@ pizzas = [
     (9, 'Four cheeses', 180, 'Dor bleu cheese + gouda cheese + cream cheese + mozzarella'),
     (10, 'Sharp', 200, 'Salami + tomatoes + bell pepper + green beans + sauce')
 ]
-
-while True:
-    print('Hello. 0 - Exit, 1 - print all pizzas')
-    c = input('Your choise: ')
-    match c:
-        case '0':
-            break
-        case '1':
-            print(pizzas)
-        case _:
-            print('Wrong choise! Try again')
-
-print('Bay')
-
 a = random.randint(1, 6)
 print(a)
 chek_1 = random.sample(pizzas, a)
@@ -36,6 +23,5 @@ for i in chek_1:
 
     i = random.randint(1, 3)
     print(i)
-
 
 
