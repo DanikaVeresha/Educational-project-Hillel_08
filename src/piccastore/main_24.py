@@ -24,24 +24,20 @@ while True:
                 print(item)
         case _:
             print('Wrong choise! Try again')
+    order = random.randint(1, 6)
+    print(order)
+    chek_1 = random.sample(pizzas, order)
+    print(f"chek_1:{chek_1}")
+    for item in chek_1:
+        print(item)
+        item = random.randint(1, 3)
+        print(item)
+    pizzas_1 = [item for item in pizzas if item[2] < 150]
+    print(f'the price of pizza is less than 150 UAH:{pizzas_1}')
+    pizzas_2 = [item for item in pizzas if item[2] > 150]
+    print(f'the price of pizza is more than 150 UAH:{pizzas_2}')
+    pizzas_3 = [item for item in pizzas if item[2] == 150]
+    print(f'the price of pizza is 150 UAH:{pizzas_3}')
 
 print('Bay')
-
-order = random.randint(1, 6)
-print(order)
-chek_1 = random.sample(pizzas, order)
-print(f"chek_1:{chek_1}")
-for item in chek_1:
-    print(item)
-    item = random.randint(1, 3)
-    print(item)
-
-pizzas_1 = [item for item in pizzas if item[2] < 150]
-print(f'the price of pizza is less than 150 UAH:{pizzas_1}')
-
-pizzas_2 = [item for item in pizzas if item[2] > 150]
-print(f'the price of pizza is more than 150 UAH:{pizzas_2}')
-
-pizzas_3 = [item for item in pizzas if item[2] == 150]
-print(f'the price of pizza is 150 UAH:{pizzas_3}')
 
