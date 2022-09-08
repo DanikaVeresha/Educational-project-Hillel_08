@@ -3,35 +3,37 @@ from unittest import case
 from collections import namedtuple
 from functools import reduce
 
-def Pizzas():
-    for item in pizzas:
-        print(item.name, item.price)
-def Chek():
-    Chek = random.sample(pizzas, order)
-    for item in Chek:
+Pizza = namedtuple('Pizza', ['idx', 'name', 'price', 'description'])
+
+def pizzas():
+    for item in Pizzas:
+        print(item.idx, item.name)
+def chek():
+    chek = random.sample(Pizzas, order)
+    for item in chek:
         print(f"Chek:{item}")
-    for item in Chek:
+    for item in chek:
         print(item, random.randint(1, 3))
-def Decorator(func):
+def decorator(func):
     def inner():
         print('----------')
         func()
         print('data_____, chek_№__,You were served by: cashier - Veresha_Dasha')
     return inner
-Chek = Decorator(Chek)
-def Pizza_price_range():
-    pizzas_1 = filter(lambda item: item.price < 150, pizzas)
+chek = decorator(chek)
+def pizza_price_range():
+    pizzas_1 = filter(lambda item: item.price < 150, Pizzas)
     for item in pizzas_1:
         print(f'the price of pizza is less than 150 UAH:{item.name}')
-    pizzas_2 = filter(lambda item: item.price > 150, pizzas)
+    pizzas_2 = filter(lambda item: item.price > 150, Pizzas)
     for item in pizzas_2:
         print(f'the price of pizza is more than 150 UAH:{item.name}')
-    pizzas_3 = filter(lambda item: item.price == 150, pizzas)
+    pizzas_3 = filter(lambda item: item.price == 150, Pizzas)
     for item in pizzas_3:
         print(f'the price of pizza is 150 UAH:{item.name}')
 
-Pizza = namedtuple('Pizza', ['idx', 'name', 'price', 'description'])
-pizzas = [
+
+Pizzas = [
     Pizza(1, 'Hawaiian', 100, 'Chicken + pineapple + bakery + mozzarella + sauce'),
     Pizza(2, 'Carbonara', 110, 'Bacon + tavern + bakery + marinated + olives + mozzarella'),
     Pizza(3, 'M`yasna', 120, 'Bacon + salami + tomato + mozzarella'),
@@ -51,14 +53,14 @@ while True:
         case '0':
             break
         case '1':
-            Pizzas()
+            pizzas()
         case '2':
             order = random.randint(1, 6)
             print(order)
         case '3':
-            Chek()
+            chek()
         case '4':
-            Pizza_price_range()
+            pizza_price_range()
         case _:
             print('Wrong choise! Try again')
 
