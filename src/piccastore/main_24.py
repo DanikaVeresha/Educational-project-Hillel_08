@@ -1,26 +1,25 @@
 import random
-from unittest import case
 from collections import namedtuple
-from functools import reduce
 
 Pizza = namedtuple('Pizza', ['idx', 'name', 'price', 'description'])
-
 def pizzas():
     for item in Pizzas:
         print(item.idx, item.name)
-def chek():
-    chek = random.sample(Pizzas, order)
-    for item in chek:
-        print(f"Chek:{item}")
-    for item in chek:
-        print(item, random.randint(1, 3))
 def decorator(func):
     def inner():
         print('----------')
         func()
         print('data_____, chek_№__,You were served by: cashier - Veresha_Dasha')
     return inner
-chek = decorator(chek)
+@decorator
+def chek():
+    order = random.randint(1, 6)
+    print(order)
+    chek = random.sample(Pizzas, order)
+    for item in chek:
+        print(f"Chek:{item}")
+    for item in chek:
+        print(item, random.randint(1, 3))
 def pizza_price_range():
     pizzas_1 = filter(lambda item: item.price < 150, Pizzas)
     for item in pizzas_1:
@@ -31,7 +30,6 @@ def pizza_price_range():
     pizzas_3 = filter(lambda item: item.price == 150, Pizzas)
     for item in pizzas_3:
         print(f'the price of pizza is 150 UAH:{item.name}')
-
 
 Pizzas = [
     Pizza(1, 'Hawaiian', 100, 'Chicken + pineapple + bakery + mozzarella + sauce'),
@@ -55,11 +53,8 @@ while True:
         case '1':
             pizzas()
         case '2':
-            order = random.randint(1, 6)
-            print(order)
-        case '3':
             chek()
-        case '4':
+        case '3':
             pizza_price_range()
         case _:
             print('Wrong choise! Try again')
