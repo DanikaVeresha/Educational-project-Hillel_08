@@ -1,10 +1,11 @@
 import random
 from unittest import case
 from collections import namedtuple
+from functools import reduce
 
 def Pizzas():
     for item in pizzas:
-        print(item)
+        print(item.name, item.price)
 def Chek():
     Chek = random.sample(pizzas, order)
     for item in Chek:
@@ -19,15 +20,15 @@ def Decorator(func):
     return inner
 Chek = Decorator(Chek)
 def Pizza_price_range():
-    pizzas_1 = [item for item in pizzas if item.price < 150]
+    pizzas_1 = filter(lambda item: item.price < 150, pizzas)
     for item in pizzas_1:
-        print(f'the price of pizza is less than 150 UAH:{item}')
-    pizzas_2 = [item for item in pizzas if item.price > 150]
+        print(f'the price of pizza is less than 150 UAH:{item.name}')
+    pizzas_2 = filter(lambda item: item.price > 150, pizzas)
     for item in pizzas_2:
-        print(f'the price of pizza is more than 150 UAH:{item}')
-    pizzas_3 = [item for item in pizzas if item.price == 150]
+        print(f'the price of pizza is more than 150 UAH:{item.name}')
+    pizzas_3 = filter(lambda item: item.price == 150, pizzas)
     for item in pizzas_3:
-        print(f'the price of pizza is 150 UAH:{item}')
+        print(f'the price of pizza is 150 UAH:{item.name}')
 
 Pizza = namedtuple('Pizza', ['idx', 'name', 'price', 'description'])
 pizzas = [
