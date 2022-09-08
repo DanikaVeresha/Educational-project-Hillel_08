@@ -5,19 +5,19 @@ from collections import namedtuple
 def Pizzas():
     for item in pizzas:
         print(item)
-def Chek_1():
-    Chek_1 = random.sample(pizzas, order)
-    for item in Chek_1:
-        print(f"Chek_1:{item}")
-    for item in Chek_1:
+def Chek():
+    Chek = random.sample(pizzas, order)
+    for item in Chek:
+        print(f"Chek:{item}")
+    for item in Chek:
         print(item, random.randint(1, 3))
-def Decator(func):
+def Decorator(func):
     def inner():
         print('----------')
         func()
         print('data_____, chek_№__,You were served by: cashier - Veresha_Dasha')
     return inner
-Chek_1 = Decator(Chek_1)
+Chek = Decorator(Chek)
 def Pizza_price_range():
     pizzas_1 = [item for item in pizzas if item.price < 150]
     for item in pizzas_1:
@@ -28,7 +28,6 @@ def Pizza_price_range():
     pizzas_3 = [item for item in pizzas if item.price == 150]
     for item in pizzas_3:
         print(f'the price of pizza is 150 UAH:{item}')
-
 
 Pizza = namedtuple('Pizza', ['idx', 'name', 'price', 'description'])
 pizzas = [
@@ -56,7 +55,7 @@ while True:
             order = random.randint(1, 6)
             print(order)
         case '3':
-            Chek_1()
+            Chek()
         case '4':
             Pizza_price_range()
         case _:
