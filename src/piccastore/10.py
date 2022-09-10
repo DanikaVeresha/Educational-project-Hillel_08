@@ -2,34 +2,56 @@ import random
 from collections import namedtuple
 
 Pizza = namedtuple('Pizza', ['idx', 'name', 'price', 'description'])
-def pizzas():
+
+
+def pizzas_list():
     for item in Pizzas:
-        print(item.idx, item.name)
-def decorator(func):
+        print(f'{item.idx}, {item.name}\n'
+              f' description: {item.description}\n'
+              f' price: {item.price} UAH')
+
+
+def dec(func):
     def inner():
-        print('----------')
+        print('----------------------------------------------------------------')
         func()
-        print('data_____, chek_№__,You were served by: cashier - Veresha_Dasha')
+        print(f'data_____, check_№:_{random.randint(1, 100)}_\n'
+              f'You were served by: cashier - Veresha_Dasha')
+        print('----------------------------------------------------------------')
     return inner
-@decorator
-def chek():
+
+
+def decs(func):
+    def inner():
+        print('-------------Category of pizzas by pricing policy: -------------')
+        func()
+        print('----------------------------------------------------------------')
+    return inner
+
+
+@dec
+def check():
     order = random.randint(1, 6)
     print(order)
-    chek = random.sample(Pizzas, order)
-    for item in chek:
-        print(f"Chek:{item}")
-    for item in chek:
-        print(item, random.randint(1, 3))
+    check = random.sample(Pizzas, order)
+    for item in check:
+        print(f'pizza: {item.name}\n'
+              f'price of one pizza: {item.price} UAH\n'
+              f'amount: {random.randint(1, 3)}')
+
+
+@decs
 def pizza_price_range():
     pizzas_1 = filter(lambda item: item.price < 150, Pizzas)
     for item in pizzas_1:
-        print(f'the price of pizza is less than 150 UAH:{item.name}')
+        print(f'the price of pizza is less than 150 UAH: {item.name}')
     pizzas_2 = filter(lambda item: item.price > 150, Pizzas)
     for item in pizzas_2:
-        print(f'the price of pizza is more than 150 UAH:{item.name}')
+        print(f'the price of pizza is more than 150 UAH: {item.name}')
     pizzas_3 = filter(lambda item: item.price == 150, Pizzas)
     for item in pizzas_3:
-        print(f'the price of pizza is 150 UAH:{item.name}')
+        print(f'the price of pizza is 150 UAH: {item.name}')
+
 
 Pizzas = [
     Pizza(1, 'Hawaiian', 100, 'Chicken + pineapple + bakery + mozzarella + sauce'),
@@ -45,18 +67,24 @@ Pizzas = [
 ]
 
 while True:
-    print('Hello. 0 - Exit, 1 - all pizzas()')
+    print('Hello. 0 - Exit, 1 - all pizzas(), 2 - order, 3 - pizza_price_range')
     c = input('Your choise: ')
     match c:
         case '0':
             break
         case '1':
-            pizzas()
+            pizzas_list()
         case '2':
-            chek()
+            check()
         case '3':
             pizza_price_range()
         case _:
             print('Wrong choise! Try again')
 
 print('Bay')
+
+
+
+
+
+
