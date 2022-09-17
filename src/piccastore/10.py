@@ -5,6 +5,7 @@ Pizza = namedtuple('Pizza', ['idx', 'name', 'price', 'description'])
 
 
 def pizzas_list():
+
     for item in Pizzas:
         print(f'{item.idx}, {item.name}\n'
               f' description: {item.description}\n'
@@ -15,8 +16,10 @@ def dec(func):
     def inner():
         print('----------------------------------------------------------------')
         func()
-        print(f'data_____, check_№:_{random.randint(1, 100)}_\n'
-              f'You were served by: cashier - Veresha_Dasha')
+        d = random.randint(1, 31)
+        m = random.randint(1, 12)
+        print(f'data:_{d}/{m}/2022_, check_№:_{random.randint(1, 100)}_\n'
+              f'You were served by: - cashier:Veresha_Dasha')
         print('----------------------------------------------------------------')
     return inner
 
@@ -32,12 +35,16 @@ def decs(func):
 @dec
 def check():
     order = random.randint(1, 6)
-    print(order)
+    print(f'Number of pizzas in the order: {order}')
     check = random.sample(Pizzas, order)
+    sum = 0
     for item in check:
-        print(f'pizza: {item.name}\n'
+        n = random.randint(1, 3)
+        print(f'pizza name: {item.name}\n'
               f'price of one pizza: {item.price} UAH\n'
-              f'amount: {random.randint(1, 3)}')
+              f'amount: {n}')
+        sum += n*item.price
+    print(f'Order price: {sum} UAH')
 
 
 @decs
