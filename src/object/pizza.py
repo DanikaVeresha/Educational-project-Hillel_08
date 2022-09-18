@@ -12,7 +12,9 @@ class Pizza:
               f' price: {self.price} UAH')
 
 
+my_pizza = Pizza
+my_pizza.pizza_description()
 
-
+#верно ли этот файл я сделала?
 
 
