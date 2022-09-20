@@ -1,7 +1,6 @@
 from object.Pizza import Pizza
 
 
-
 class PizzaStore(Pizza):
     '''описание пиццирии'''
     def __init__(self, pizzas):
@@ -26,3 +25,4 @@ pizzas = [
     Pizza(9, 'Four cheeses', 180, 'Dor bleu cheese + gouda cheese + cream cheese + mozzarella'),
     Pizza(10, 'Sharp', 200, 'Salami + tomatoes + bell pepper + green beans + sauce')
 ]
+
