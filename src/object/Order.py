@@ -1,25 +1,27 @@
 import random
-from object.Pizza import Pizza
 
 
-class Order(Pizza):
+class Check:
     '''описание чека'''
-    def __init__(self, number, date, month):
+    def __init__(self, number, date, check_line: list):
         '''свойства чека'''
-        super().__init__(idx, name, price, description)
         self.number = number
         self.date = date
-        self.month = month
-        
-    def __str__(self):
+        self.check_line = check_line
+
+    def receipt_details(self):
         '''суть чека'''
         self.number = random.randint(1, 100)
         self.date = random.randint(1, 31)
-        self.month = random.randint(1, 12)
+
+    def __str__(self):
         return f'\n ----------------------------------------------------------------' \
-               f'\n data:_{self.date}/{self.month}/2022_, check_№:_{self.number}' \
-               f'\n You were served by: - cashier:Veresha_Dasha' \
+               f'\n Check_№:_{self.number}, date: _{self.date}/_08_/2022_' \
+               f'\n Your order: {self.check_line}' \
+               f'\n You were served by: - cashier: Veresha_Dasha' \
                f'\n ----------------------------------------------------------------'
+
+
 
 
 

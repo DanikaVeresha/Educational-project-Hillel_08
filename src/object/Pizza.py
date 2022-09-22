@@ -9,11 +9,12 @@ class Pizza:
         self.price = price
         self.description = description
 
-    def __repr__(self):
+    def __str__(self):
         '''вывод на экран пицци'''
         return f'\n Pizza: {self.idx}: {self.name}' \
                f'\n Description: {self.description}' \
                f'\n Price: {self.price} UAH'
+
 
 
 

@@ -2,29 +2,25 @@ import random
 from object.Pizza import Pizza
 
 
-class OrderLine(Pizza):
-    '''описание строки чека'''
-    def __init__(self, pizza, amount):
+class OrderLine:
+    '''атрибуты строки чека'''
+    def __init__(self, pizza: Pizza, amount_for_check, amount_for_order):
         '''свойства строки чека'''
-        super().__init__(idx, name, price, description)
         self.pizza = pizza
-        self.amount = amount
-        self.sum = 0
+        self.amount_for_check = amount_for_check
+        self.amount_for_order = amount_for_order
+        self.sum = self.amount_for_order * self.pizza.price
 
+    def random_pizza(self):
+        '''суть заказа'''
+        self.amount_for_check = random.randint(1, 6)
+        self.amount_for_order = random.randint(1, 3)
 
     def __str__(self):
-        '''вывод на экран строки чека'''
-        self.amount = random.randint(1, 6)
-        self.pizza = random.sample(pizzas, self.amount)
-        for item in self.pizza:
-            n = random.randint(1, 3)
-            self.sum += n * item.price
-            return f'\n Number of pizzas in the order: {self.amount}'\
-                   f'\n Pizza: {self.pizza}' \
-                   f'\n pizza name: {item.name}' \
-                   f'\n price of one pizza: {item.price} UAH' \
-                   f'\n amount: {n}' \
-                   f'\n Order price: {self.sum} UAH'
+        return f'\n Pizza name: {self.pizza}'\
+               f'\n Amount: {self.amount_for_check}' \
+               f'\n Total_for_order: {self.sum} UAH'
+
 
 
 
