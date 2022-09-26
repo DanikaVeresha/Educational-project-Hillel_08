@@ -1,4 +1,3 @@
-from object.CHEKLINE import CheckLine
 import random
 
 
@@ -32,4 +31,5 @@ class Check:
         for item in [self.lines]:
             txt += f' \t {item.pizza.name} \t {item.pizza.price} \t {item.amount_pizzas} \t {item.sum}\n'
         txt += f' \t Всего по чеку: {self.total}\n'
+
         return txt

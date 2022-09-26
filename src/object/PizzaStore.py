@@ -1,3 +1,6 @@
+from object.pizza import Pizza
+from object.CHECK import Check
+from object.CHEKLINE import CheckLine
 import random
 
 
@@ -10,36 +13,40 @@ class Singleton(type):
         return cls._instances[cls]
 
 
-class MyClass(BaseClass, metaclass=Singleton):
-    pass
+class Pizzastore(metaclass=Singleton):
+    '''атрибуты пиццерии'''
+    def __init__(self, pizzas):
+        self.pizzas = [Pizza(*item) for item in pizzas]
+        self.checks = []
+        self.pizzas_1 = filter(lambda item: item.price < 150, self.pizzas)
+        self.pizzas_2 = filter(lambda item: item.price > 150, self.pizzas)
+        self.pizzas_3 = filter(lambda item: item.price == 150, self.pizzas)
 
+    def add_random_check(self):
+        '''добавляет каждую строку чека в общий чек'''
+        check = Check(len(self.checks) + 1)           #у меня не получаеться это устранить
+        amount_line = random.randint(1, 6)
+        random_pizza_list = random.sample(self.pizzas, amount_line)
+        sum = 0
+        for item in random_pizza_list:
+            amount = random.randint(1, 3)
+            sum1 = item.price * amount
+            sum += sum1
+            checkline = CheckLine(amount, item)
+            check.lines.append(checkline)
+        check.calculate_total()
+        self.checks.append(check)
 
-class PizzaStore:
-    '''описание пиццирии'''
-    def __init__(self, pizzas: list, amount_check):
-        '''свойства пиццирии'''
-        self.pizzas = pizzas
-        self.amount_check = amount_check
-        self.sum = (lambda a: a.pizza.price * self.amount_check)  #переспросить верно ли это
-        self.pizzas_less = filter(lambda a: a.pizza.price < 150, self.pizzas)
-        self.pizzas_more = filter(lambda a: a.pizza.price > 150, self.pizzas)
-        self.pizzas_is = filter(lambda a: a.pizza.price == 150, self.pizzas)
-
-    def random_pizzas(self):
-        '''cуть заказа клиента'''
-        self.amount_check = random.randint(1, 3)
-        return f'\n Check total: {self.sum} UAH'
+    def calculate_checks(self):
+        self.checks = sum([item.sum for item in self.checks])
 
     def __str__(self):
-        '''список наших пицц, по ценовой категории с полным описанием пицци'''
-        return f'\n The price of pizza is less than 150 UAH: {self.pizzas_less}' \
-               f'\n The price of pizza is more than 150 UAH: {self.pizzas_more}' \
-               f'\n The price of pizza is 150 UAH: {self.pizzas_is}'
-
-
-
-
-
-
-
-
+        txt = f' \t Pizzas list: {self.pizzas}\n'
+        txt += f' \t list pizzas for price then 150 UAH: {self.pizzas_1}\n'
+        txt += f' \t list pizzas for price more 150 UAH: {self.pizzas_2}\n'
+        txt += f' \t list pizzas price is 150 UAH: {self.pizzas_3}\n'
+        for item in self.checks:
+            txt += f'{item.pizza.name} \t {item.pizza.price} \t {item.amount_pizzas} \t {item.sum}\n' \
+                   f'Total for check: {item.total}\n'
+        txt += f'{self.checks}'
+        return txt

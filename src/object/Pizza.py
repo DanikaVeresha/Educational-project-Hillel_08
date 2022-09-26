@@ -1,19 +1,22 @@
+from object.PIZZALIST import pizzas
 
 
 class Pizza:
-    '''описание пицци'''
+    '''атрибуты пицци'''
     def __init__(self, idx, name, price, description):
-        '''свойства пицци'''
         self.idx = idx
         self.name = name
         self.price = price
         self.description = description
 
     def __str__(self):
-        '''вывод на экран пицци'''
-        return f'\n Pizza: {self.idx}: {self.name}' \
-               f'\n Description: {self.description}' \
-               f'\n Price: {self.price} UAH'
+        '''пицца на екран'''
+        for item in pizzas:
+            return f'{item.idx}. {item.name}:\n' \
+                   f'Описание пицци: {item.description}'
+
+
+
 
 
 
