@@ -1,4 +1,15 @@
-from object.PizzaStore import PizzaStore
+from object.pizza import Pizza
+
+
+class PizzaStore(Pizza):
+    def __init__(self, pizzas):
+        super(PizzaStore, self).__init__(Pizza, self)
+        self.pizzas = pizzas
+
+    def all_pizzas(self):
+        print(f'{self.idx}, {self.name}\n'
+              f' description: {self.description}\n'
+              f' price: {self.price} UAH')
 
 
 pizzas = [
@@ -14,28 +25,7 @@ pizzas = [
     Pizza(10, 'Sharp', 200, 'Salami + tomatoes + bell pepper + green beans + sauce')
 ]
 
+#Этот файл еще не сделан, это черновик
 
-def main(ps):
-    while True:
-        print('Hello. 0 - Exit, 1 - all pizzas(), 2 - order, 3 - pizza_price_range')
-        c = input('Your choise: ')
-        match c:
-            case '0':
-                break
-            case '1':
-                ps.print_pizzas(ps.pizzas)
-            case '2':
-                ps.print_amount_check(ps.amount_check)
-            case '3':
-                pizza_price_range()
-            case _:
-                print('Wrong choise! Try again')
-
-    print('Bay')
-
-
-if __name__ == '__main__':
-    ps = PizzaStore(pizzas)
-    main = ps
 
 

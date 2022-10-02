@@ -7,24 +7,24 @@ Pizza = namedtuple('Pizza', ['idx', 'name', 'price', 'description'])
 def pizzas_list():
 
     for item in Pizzas:
-        print(f'{item.idx}, {item.name}\n'
-              f' description: {item.description}\n'
-              f' price: {item.price} UAH')
+        print(f'\n {item.idx}. {item.name}:'
+              f'\n Description: {item.description}')
 
 
-def dec(func):
+def dec_1(func):
     def inner():
         print('----------------------------------------------------------------')
         func()
         d = random.randint(1, 31)
         m = random.randint(1, 12)
-        print(f'data:_{d}/{m}/2022_, check_№:_{random.randint(1, 100)}_\n'
+        n = random.randint(1, 100)
+        print(f'data:_{d}/{m}/2022_, check_№:_{n}_\n'
               f'You were served by: - cashier:Veresha_Dasha')
         print('----------------------------------------------------------------')
     return inner
 
 
-def decs(func):
+def dec_2(func):
     def inner():
         print('-------------Category of pizzas by pricing policy: -------------')
         func()
@@ -32,32 +32,36 @@ def decs(func):
     return inner
 
 
-@dec
+@dec_1
 def check():
     order = random.randint(1, 6)
-    print(f'Number of pizzas in the order: {order}')
-    check = random.sample(Pizzas, order)
+    print(f'Number of lines in the check: {order}\n'
+          f'Pizza : price - amount')
+    check_order = random.sample(Pizzas, order)
     sum = 0
-    for item in check:
-        n = random.randint(1, 3)
-        print(f'pizza name: {item.name}\n'
-              f'price of one pizza: {item.price} UAH\n'
-              f'amount: {n}')
-        sum += n*item.price
-    print(f'Order price: {sum} UAH')
+    for item in check_order:
+        amount = random.randint(1, 3)
+        sum1 = item.price * amount
+        sum += sum1
+        print(f'{item.name}: {item.price} UAH - {amount}\n'
+              f'All by line: {sum1} UAH')
+    print(f'All by check: {sum} UAH')
 
 
-@decs
+@dec_2
 def pizza_price_range():
     pizzas_1 = filter(lambda item: item.price < 150, Pizzas)
+    print(f'The price of pizza is less than 150 UAH:')
     for item in pizzas_1:
-        print(f'the price of pizza is less than 150 UAH: {item.name}')
+        print(f'{item.idx}. {item.name} - {item.price} UAH')
     pizzas_2 = filter(lambda item: item.price > 150, Pizzas)
+    print(f'The price of pizza is more than 150 UAH:')
     for item in pizzas_2:
-        print(f'the price of pizza is more than 150 UAH: {item.name}')
+        print(f'{item.idx}. {item.name} - {item.price} UAH')
     pizzas_3 = filter(lambda item: item.price == 150, Pizzas)
+    print(f'The price of pizza is 150 UAH:')
     for item in pizzas_3:
-        print(f'the price of pizza is 150 UAH: {item.name}')
+        print(f'{item.idx}. {item.name}')
 
 
 Pizzas = [
@@ -74,7 +78,7 @@ Pizzas = [
 ]
 
 while True:
-    print('Hello. 0 - Exit, 1 - all pizzas(), 2 - order, 3 - pizza_price_range')
+    print('Hello. 0 - Exit, 1 - all pizzas(), 2 - pizza_price_range, 3 - order')
     c = input('Your choise: ')
     match c:
         case '0':
@@ -82,16 +86,10 @@ while True:
         case '1':
             pizzas_list()
         case '2':
-            check()
-        case '3':
             pizza_price_range()
+        case '3':
+            check()
         case _:
             print('Wrong choise! Try again')
 
 print('Bay')
-
-
-
-
-
-

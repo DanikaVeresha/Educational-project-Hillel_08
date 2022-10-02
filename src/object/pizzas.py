@@ -1,7 +1,12 @@
-from object.PizzaStore import PizzaStore
 
+NAME = 'Pizzaz'
 
-pizzas = [
+class Pizzas:
+    """атрибуты пицц"""
+    def __init__(self, list_of_all_pizzas):
+        self.list = list_of_all_pizzas
+
+PZ = Pizzas[
     Pizza(1, 'Hawaiian', 100, 'Chicken + pineapple + bakery + mozzarella + sauce'),
     Pizza(2, 'Carbonara', 110, 'Bacon + tavern + bakery + marinated + olives + mozzarella'),
     Pizza(3, 'M`yasna', 120, 'Bacon + salami + tomato + mozzarella'),
@@ -14,28 +19,4 @@ pizzas = [
     Pizza(10, 'Sharp', 200, 'Salami + tomatoes + bell pepper + green beans + sauce')
 ]
 
-
-def main(ps):
-    while True:
-        print('Hello. 0 - Exit, 1 - all pizzas(), 2 - order, 3 - pizza_price_range')
-        c = input('Your choise: ')
-        match c:
-            case '0':
-                break
-            case '1':
-                ps.print_pizzas(ps.pizzas)
-            case '2':
-                ps.print_amount_check(ps.amount_check)
-            case '3':
-                pizza_price_range()
-            case _:
-                print('Wrong choise! Try again')
-
-    print('Bay')
-
-
-if __name__ == '__main__':
-    ps = PizzaStore(pizzas)
-    main = ps
-
-
+print(PZ)
