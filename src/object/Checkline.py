@@ -1,4 +1,4 @@
-from object.pizza import Pizza
+from object.PIZZA import Pizza
 
 
 class CheckLine:

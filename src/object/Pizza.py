@@ -13,7 +13,9 @@ class Pizza:
         '''пицца на екран'''
         for item in pizzas:
             return f'{item.idx}. {item.name}:\n' \
-                   f'Описание пицци: {item.description}'
+                   f'Описание пицци: {item.description}\n'
+
+
 
 
 

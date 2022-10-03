@@ -1,7 +1,8 @@
-from object.pizza import Pizza
-from object.CHECK import Check
-from object.CHEKLINE import CheckLine
+from object.PIZZA import Pizza
 import random
+from object.OrderCheck import Check
+from object.Checkline import CheckLine
+from object.my_exception import MyException
 
 
 class Singleton(type):
@@ -16,15 +17,19 @@ class Singleton(type):
 class Pizzastore(metaclass=Singleton):
     '''атрибуты пиццерии'''
     def __init__(self, pizzas):
-        self.pizzas = [Pizza(*item) for item in pizzas]
+        self.price = None
+        self.pizzas = ([Pizza(*item) for item in pizzas])
         self.checks = []
         self.pizzas_1 = filter(lambda item: item.price < 150, self.pizzas)
         self.pizzas_2 = filter(lambda item: item.price > 150, self.pizzas)
         self.pizzas_3 = filter(lambda item: item.price == 150, self.pizzas)
 
+    def check(self, date, number, line):
+        pass
+
     def add_random_check(self):
         '''добавляет каждую строку чека в общий чек'''
-        check = Check(len(self.checks) + 1)           #у меня не получаеться это устранить
+        check = Check(len(self.checks) + 1)
         amount_line = random.randint(1, 6)
         random_pizza_list = random.sample(self.pizzas, amount_line)
         sum = 0
@@ -40,6 +45,13 @@ class Pizzastore(metaclass=Singleton):
     def calculate_checks(self):
         self.checks = sum([item.sum for item in self.checks])
 
+    def filter_price(self):
+        try:
+            if self.price <= 0:
+                raise MyException('Error')
+        finally:
+            print('You entered the wrong price value')
+
     def __str__(self):
         txt = f' \t Pizzas list: {self.pizzas}\n'
         txt += f' \t list pizzas for price then 150 UAH: {self.pizzas_1}\n'
@@ -48,5 +60,8 @@ class Pizzastore(metaclass=Singleton):
         for item in self.checks:
             txt += f'{item.pizza.name} \t {item.pizza.price} \t {item.amount_pizzas} \t {item.sum}\n' \
                    f'Total for check: {item.total}\n'
-        txt += f'{self.checks}'
+        txt += f'{self.checks}\n'
         return txt
+
+
+
