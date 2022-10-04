@@ -1,10 +1,5 @@
-from object.PIZZALIST import pizzas
 from object.PIZZASTORE import Pizzastore
-from object.my_exception import MyException
-
-
-def exs(ex):
-    print(ex.filter_price())
+from object.PIZZALIST import pizzas
 
 
 def main(ps):
@@ -21,6 +16,7 @@ def main(ps):
                 ps.add_random_check()
                 print(ps.checks[-1])
             case '3':
+                ps.filter_price()
                 print(ps.pizzas_1)
                 print(ps.pizzas_2)
                 print(ps.pizzas_3)
@@ -32,5 +28,6 @@ def main(ps):
 
 if __name__ == '__main__':
     ps = Pizzastore(pizzas)
-    ex = MyException(Exception)
+
+
 
