@@ -1,8 +1,8 @@
 from object.PIZZA import Pizza
+import csv
 import random
 from object.OrderCheck import Check
 from object.Checkline import CheckLine
-from object.my_exception import MyException
 
 
 class Singleton(type):
@@ -16,13 +16,21 @@ class Singleton(type):
 
 class Pizzastore(metaclass=Singleton):
     '''атрибуты пиццерии'''
-    def __init__(self, pizzas):
-        self.price = None
+    def __init__(self, pizzas, price):
         self.pizzas = ([Pizza(*item) for item in pizzas])
         self.checks = []
+        self.price = price
         self.pizzas_1 = filter(lambda item: item.price < 150, self.pizzas)
         self.pizzas_2 = filter(lambda item: item.price > 150, self.pizzas)
         self.pizzas_3 = filter(lambda item: item.price == 150, self.pizzas)
+
+    def read_pizzalist_from_file(self):
+        pizzas = []
+        with open('src/object/PIZZALIST.csv', 'rt') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                pizzas.append(Pizza(row['idx'], row['name'], row['price'], row['description']))
+        return pizzas
 
     def check(self, date, number, line):
         pass
@@ -45,13 +53,6 @@ class Pizzastore(metaclass=Singleton):
     def calculate_checks(self):
         self.checks = sum([item.sum for item in self.checks])
 
-    def filter_price(self):
-        try:
-            if self.price <= 0:
-                raise MyException('Error')
-        finally:
-            print('You entered the wrong price value')
-
     def __str__(self):
         txt = f' \t Pizzas list: {self.pizzas}\n'
         txt += f' \t list pizzas for price then 150 UAH: {self.pizzas_1}\n'
@@ -62,6 +63,7 @@ class Pizzastore(metaclass=Singleton):
                    f'Total for check: {item.total}\n'
         txt += f'{self.checks}\n'
         return txt
+
 
 
 
