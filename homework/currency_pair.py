@@ -1,4 +1,3 @@
-from homework.currency_pairs_list import *
 
 
 class Course:
@@ -8,13 +7,7 @@ class Course:
         self.available = available
 
     def __str__(self):
-        for item in courseUAH:
-            return f'\n Course: {item.course} | Rate: {item.rate}\n' \
-                   f'\n Available: {item.available} USD\n'
-        for item in courseUSD:
-            return f'\n Course: {item.course} | Rate: {item.rate}\n' \
-                   f'\n Available: {item.available} USD\n'
-        for item in courseBCH:
-            return f'\n Course: {item.course} | Rate: {item.rate}\n' \
-                   f'\n Available: {item.available} USD\n'
+        return f'Course: {self.course} | Rate: {self.rate}\n' \
+               f'Available: {self.available} UAH\n'
+
 

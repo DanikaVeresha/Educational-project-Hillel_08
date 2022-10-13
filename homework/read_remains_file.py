@@ -1,4 +1,4 @@
-from homework.currency_pair import *
+from homework.currency_pairs_list import *
 
 
 class ReadingRemains:

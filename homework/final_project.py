@@ -16,11 +16,11 @@ def main(x):
             case '0':
                 break
             case '1':
-                x.Course(courseUSD)
+                print(x.Course(courseUSD))
             case '2':
-                x.Course(courseUAH)
+                print(x.Course(courseUAH))
             case '3':
-                x.Course(courseBCH)
+                print(x.Course(courseBCH))
             case '4':
                 x.operationUAH()
             case '5':
@@ -32,4 +32,6 @@ def main(x):
 
 
 if __name__ == '__main__':
-    x = Exchange(courseUSD, courseUAH, courseBCH)
+    x = Exchange(courseUSD, courseUAH)
+    d = Course(courseUSD, courseUAH, courseBCH)
+

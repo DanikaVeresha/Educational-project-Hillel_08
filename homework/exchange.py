@@ -2,8 +2,7 @@ from homework.read_remains_file import *
 
 
 class Exchange:
-    def __init__(self, course, course_ex, request):
-        self.course = course
+    def __init__(self, course_ex, request):
         self.request = request
         self.course_ex = course_ex
 
@@ -11,15 +10,15 @@ class Exchange:
         try:
             self.request = int(input('Amount in UAH: '))
             if self.request > 0:
-                self.course_ex = courseUSD
-                for item in self.course_ex:
-                    result = self.request / item.rate
+                value = courseUSD
+                for item in value:
+                    self.course_ex = self.request / item.rate
                     result1 = 1 / item.rate
-                    if item.available >= result:
-                        return f'UAH conversion: {round(result, 4)} | RATE: {round(result1, 6)}\n'
+                    if item.available >= self.course_ex:
+                        return f'UAH conversion: {round(self.course_ex, 4)} | RATE: {round(result1, 6)}\n'
                     else:
                         return f'Sorry, error.The currency balance is not enough\n' \
-                               f'To complete the transaction, you must: {result} USD\n' \
+                               f'To complete the transaction, you must: {self.course_ex} USD\n' \
                                f'Available balance: {item.available} USD\n'
             else:
                 return f'Your exchange request:{self.request} is not correct'
@@ -32,15 +31,15 @@ class Exchange:
         try:
             self.request = int(input('Amount in UAH: '))
             if self.request > 0:
-                self.course_ex = courseUAH
-                for item in self.course_ex:
-                    result = self.request * item.rate
+                value = courseUAH
+                for item in value:
+                    self.course_ex = self.request * item.rate
                     result1 = 1 * item.rate
-                    if item.available >= result:
-                        return f'UAH conversion: {result} | RATE: {result1}\n'
+                    if item.available >= self.course_ex:
+                        return f'USD conversion: {self.course_ex} | RATE: {result1}\n'
                     else:
                         return f'Sorry, error.The currency balance is not enough\n' \
-                               f'To complete the transaction, you must: {result} UAH\n' \
+                               f'To complete the transaction, you must: {self.course_ex} UAH\n' \
                                f'Available balance: {item.available} UAH\n'
             else:
                 return f'Your exchange request:{self.request} is not correct'
@@ -50,16 +49,14 @@ class Exchange:
             print('Verification done')
 
     def __str__(self):
-        txt = courseUAH
-        txt += courseUSD
-        txt += courseBCH
-        txt = f' \t Course pairs list: {self.course}\n'
-        for item in self.course_ex:
-            txt += f'Course:{item.course} \t Rate:{item.rate} \t Available:{item.available}\n' \
-                   f'Request: {self.request}\n' \
-                   f'Exchange result: {self.course_ex}\n'
-        txt = f'{self.course_ex}\n'
+        return f'UAH conversion: {self.course_ex} UAH\n' \
+               f'USD conversion: {self.course_ex} USD\n'
 
-        return txt
+
+
+
+
+
+
 
 
