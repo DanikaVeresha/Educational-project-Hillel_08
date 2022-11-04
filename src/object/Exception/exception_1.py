@@ -1,4 +1,4 @@
-from object.my_exception import MyException
+from object.Exception.my_exception import MyException
 
 price = ""
 try:
