@@ -1,6 +1,7 @@
 from object.pizzeria.Pizza import *
 
-pizzas = Pizza('idx', 'name', 'price', 'description')
+pizzas = Operation('idx', 'name', 'price', 'description')
+
 
 
 

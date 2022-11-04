@@ -15,6 +15,11 @@ class Pizza:
             print(f'{item.idx}. Pizza: {item.name} | -  {item.price} UAH\n'
                   f'Description: {item.description}\n')
 
+
+class Operation(Pizza):
+    def __init__(self, idx, name, price, description):
+        super().__init__(idx, name, price, description)
+
     def check(self):
         '''вывод всех заказов за текущую дату'''
         order = random.randint(1, 6)
@@ -35,7 +40,7 @@ class Pizza:
         print(f'----------------------------------------------------------------\n'
               f'Total for the check for the current day: {sum} UAH\n'
               f'data:_{d}/{m}/2022_, check_№:_{n}_\n'
-              f'You were served by: - cashier:Veresha_Dasha\n'
+              f'You were served by: - cashier: Veresha_Dasha\n'
               f'----------------------------------------------------------------')
 
     def pizza_price_range(self):
@@ -54,13 +59,13 @@ class Pizza:
             print(f'{item.idx}. {item.name}\n')
 
 
-Pizzas = Pizza(1, 'Hawaiian', 100, 'Chicken + pineapple + bakery + mozzarella + sauce'),\
-         Pizza(2, 'Carbonara', 110, 'Bacon + tavern + bakery + marinated + olives + mozzarella'),\
-         Pizza(3, 'M`yasna', 120, 'Bacon + salami + tomato + mozzarella'),\
-         Pizza(4, 'Margarita', 130, 'Tomato + mozzarella + sauce + salami'),\
-         Pizza(5, 'Mislivska', 140, 'Hunting sausages + salami + salted cucumber + garlic'),\
-         Pizza(6, 'Vegetable teriyaki', 150, 'Tomato + mushrooms + bell pepper + pickles'),\
-         Pizza(7, 'Pepperoni', 160, 'Pepperoni + italian herbs + mozzarella + signature sauce'),\
-         Pizza(8, 'Francesca', 170, 'Bacon + salami + mushrooms + tomato + olives + mozzarella'),\
-         Pizza(9, 'Four cheeses', 180, 'Dor bleu cheese + gouda cheese + cream cheese + mozzarella'),\
-         Pizza(10, 'Sharp', 200, 'Salami + tomatoes + bell pepper + green beans + sauce')
+Pizzas = Operation(1, 'Hawaiian', 100, 'Chicken + pineapple + bakery + mozzarella + sauce'),\
+         Operation(2, 'Carbonara', 110, 'Bacon + tavern + bakery + marinated + olives + mozzarella'),\
+         Operation(3, 'M`yasna', 120, 'Bacon + salami + tomato + mozzarella'),\
+         Operation(4, 'Margarita', 130, 'Tomato + mozzarella + sauce + salami'),\
+         Operation(5, 'Mislivska', 140, 'Hunting sausages + salami + salted cucumber + garlic'),\
+         Operation(6, 'Vegetable teriyaki', 150, 'Tomato + mushrooms + bell pepper + pickles'),\
+         Operation(7, 'Pepperoni', 160, 'Pepperoni + italian herbs + mozzarella + signature sauce'),\
+         Operation(8, 'Francesca', 170, 'Bacon + salami + mushrooms + tomato + olives + mozzarella'),\
+         Operation(9, 'Four cheeses', 180, 'Dor bleu cheese + gouda cheese + cream cheese + mozzarella'),\
+         Operation(10, 'Sharp', 200, 'Salami + tomatoes + bell pepper + green beans + sauce')
