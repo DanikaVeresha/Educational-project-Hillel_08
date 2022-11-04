@@ -1,4 +1,5 @@
 import random
+import csv
 
 
 class Pizza:
@@ -34,6 +35,10 @@ class Operation(Pizza):
             amount = random.randint(1, 3)
             sum1 = item.price * amount
             sum += sum1
+            with open("fileOrder.csv", "a") as g:
+                writer = csv.writer(g)
+                writer.writerow(["data_2022year", "number of check", "order", "sum_UAH"])
+                writer.writerow([d, m, n, order, sum])
             print(f'----------------------------------------------------------------\n'
                   f'{item.name}: {item.price} UAH - {amount}\n'
                   f'All by check: {sum1} UAH')
