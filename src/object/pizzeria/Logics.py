@@ -12,11 +12,11 @@ while True:
         case '0':
             break
         case '1':
-            pizzas.enter()
+            pizzas.menu()
         case '2':
-            pizzas.pizza_price_range()
+            pizzas.price_filtering()
         case '3':
-            pizzas.check()
+            pizzas.check_orders()
         case _:
             print('Wrong choice, look in the program menu "Exchanger"')
 

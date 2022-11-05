@@ -10,7 +10,7 @@ class Pizza:
         self.price = price
         self.description = description
 
-    def enter(self):
+    def menu(self):
         '''выводит пицци на екран'''
         for item in Pizzas:
             print(f'{item.idx}. Pizza: {item.name} | -  {item.price} UAH\n'
@@ -21,7 +21,7 @@ class Operation(Pizza):
     def __init__(self, idx, name, price, description):
         super().__init__(idx, name, price, description)
 
-    def check(self):
+    def check_orders(self):
         '''вывод всех заказов за текущую дату'''
         order = random.randint(1, 6)
         print(f'Number of checks for the current day: {order}\n'
@@ -35,9 +35,9 @@ class Operation(Pizza):
             amount = random.randint(1, 3)
             sum1 = item.price * amount
             sum += sum1
-            with open("fileOrder.csv", "a") as g:
+            with open("fileOrder.csv", "w+") as g:
                 writer = csv.writer(g)
-                writer.writerow(["data_2022year", "number of check", "order", "sum_UAH"])
+                writer.writerow(["Day", "Month_2022_year", "check_number", "number_of_pizzas", "sum_UAH"])
                 writer.writerow([d, m, n, order, sum])
             print(f'----------------------------------------------------------------\n'
                   f'{item.name}: {item.price} UAH - {amount}\n'
@@ -48,7 +48,7 @@ class Operation(Pizza):
               f'You were served by: - cashier: Veresha_Dasha\n'
               f'----------------------------------------------------------------')
 
-    def pizza_price_range(self):
+    def price_filtering(self):
         '''фильтация пицц по цене'''
         pizzas_1 = filter(lambda item: item.price < 150, Pizzas)
         print(f'The price of pizza is less than 150 UAH:\n')
